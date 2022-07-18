@@ -95,7 +95,7 @@ const SlateEditor = () => {
   }, [])
 
   return (
-    <div style={{ margin: '0.8em' }}>
+    <div>
     <Slate editor={editor} value={initialValue}>
       <Editable
         renderElement={renderElement}

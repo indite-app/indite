@@ -16,11 +16,49 @@
 
 #SidebarHeader {
     width: 100%;
-    height: 3em;
+    height: 5em;
+
+    border-bottom: #414359 2px solid;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    gap: .6em;
+}
+
+#Icon {
+    width: 2.2em;
+    height: 2.2em;
+
+    margin-left: 1em;
+
+    display: block;
+
+    border-radius: 50%;
+
+    background: white;
+}
+
+#Info {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    color: white;
+}
+
+#Name {
+    font-weight: bold;
 }
 
 #Notebooks {
     width: 100%;
+    height: auto;
+    overflow: scroll;
 }
 
 .SidebarRow {
@@ -46,9 +84,31 @@
     background: #1B1C27;
 }
 
+.SidebarRow.active {
+    /* background: rgb(124, 156, 167); */
+    /* border-bottom: rgb(124, 156, 167); */
+    background: #414359;
+    outline: none;
+}
+
+.SidebarRow:last-of-type {
+    border: none;
+}
+
+.SidebarRow:last-of-type {
+    margin-bottom: 5em;
+}
+
 .SidebarRowIcon {
     width: 1.5em;
     height: 1.5em;
 
     margin-right: .5em;
+}
+
+#SidebarFooter {
+    width: 100%;
+    height: 4em;
+
+    border-top: #414359 2px solid;
 }
