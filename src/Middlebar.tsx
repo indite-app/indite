@@ -26,7 +26,9 @@ export default function Middlebar(props: MiddlebarProps) {
     return (
         <div id="Middlebar">
             <div id="TitleBar">
-                <h1 id="Title">Personal notes</h1>
+                <div className="TitlebarSider"></div>
+                <div><h1 id="Title">Personal notes</h1></div>
+                <div className="TitlebarSider"><div></div></div>
             </div>
             <div id="Notes">
                 { notes.map((v, n) => <MiddlebarRow sKey={n} key={n} title={v[0]} preview={v[1]} active={v[2] === 'true' ? true : v[2] === 'false' ? false : false} toggleActive={toggleActive} />) }
