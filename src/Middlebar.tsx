@@ -32,7 +32,7 @@ export default function Middlebar(props: MiddlebarProps) {
 
     return (
         <div id="Middlebar">
-            <div id="TitleBar">
+            <div id="Titlebar">
                 <div className="TitlebarSider"></div>
                 <div><h1 id="Title">Personal notes</h1></div>
                 <div className="TitlebarSider"><div></div></div>

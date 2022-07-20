@@ -1,10 +1,18 @@
 import { useState } from 'react'
+
 import './Sidebar.css'
 
 import SidebarRow from './SidebarRow'
 
+interface Notebook {
+    name: string,
+    icon: string,
+    active: boolean,
+    children: Array<Notebook>
+}
+
 interface SidebarProps {
-    notebooks: Array<Array<string>>
+    notebooks: Array<Notebook>
 }
 
 export default function Sidebar(props: SidebarProps) {
@@ -15,10 +23,10 @@ export default function Sidebar(props: SidebarProps) {
         console.log('toggle ' + k.toString())
         setNotebooks(notebooks.map((v, n) => {
             if (n !== k) {
-                return [v[0], v[1], 'false']
+                return {name: v.name, icon: v.icon, active: false, children: v.children} as Notebook
             } else {
-                return [v[0], v[1], 'true']
-            }    
+                return {name: v.name, icon: v.icon, active: true, children: v.children} as Notebook
+            }
         }))
     }
 
@@ -32,7 +40,7 @@ export default function Sidebar(props: SidebarProps) {
                 </div>
             </div>
             <div id="Notebooks">
-                { notebooks.map((v, n) => <SidebarRow sKey={n} key={n} name={v[0]} icon={v[1]} active={v[2] === 'true' ? true : v[2] === 'false' ? false : false} toggleActive={toggleActive} />)}
+                { notebooks.map((v, n) => <SidebarRow sKey={n} key={n} name={v.name} icon={v.icon} active={v.active} toggleActive={toggleActive} />)}
             </div>
             {/* <div id="SidebarFooter"></div> */}
         </div>
