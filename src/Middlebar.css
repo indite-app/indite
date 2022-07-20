@@ -47,14 +47,12 @@
 
 .MiddlebarRow {
     min-width: 13em;
-    height: 5em;
+    height: fit-content;
     border-bottom: 2px solid rgb(232, 232, 232);
 
     background: gainsboro;
 
-    padding-top: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
+    padding: 1em;
 }
 
 .MiddlebarRow:hover {
@@ -79,8 +77,19 @@
     font-size: 1.2em;
 }
 
-.MiddlebarRowPreview {
+.MiddlebarRowPreview,
+.MiddlebarRowDate {
     margin: 0;
 
     color: rgb(123, 123, 123);
+}
+
+.MiddlebarRowPreview {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.MiddlebarRowDate {
+    margin-top: .4em;
 }

@@ -4,8 +4,15 @@ import './Middlebar.css'
 
 import MiddlebarRow from './MiddlebarRow'
 
+interface Note {
+    title: string,
+    preview: string,
+    date: string,
+    active: boolean
+}
+
 interface MiddlebarProps {
-    notes: Array<Array<string>>
+    notes: Array<Note>
 }
 
 export default function Middlebar(props: MiddlebarProps) {
@@ -16,9 +23,9 @@ export default function Middlebar(props: MiddlebarProps) {
         console.log('toggle ' + k.toString())
         setNotes(notes.map((v, n) => {
             if (n !== k) {
-                return [v[0], v[1], 'false']
+                return {title: v.title, preview: v.preview, date: v.date, active: false} as Note
             } else {
-                return [v[0], v[1], 'true']
+                return {title: v.title, preview: v.preview, date: v.date, active: true} as Note
             }    
         }))
     }
@@ -31,7 +38,7 @@ export default function Middlebar(props: MiddlebarProps) {
                 <div className="TitlebarSider"><div></div></div>
             </div>
             <div id="Notes">
-                { notes.map((v, n) => <MiddlebarRow sKey={n} key={n} title={v[0]} preview={v[1]} active={v[2] === 'true' ? true : v[2] === 'false' ? false : false} toggleActive={toggleActive} />) }
+                { notes.map((v, n) => <MiddlebarRow sKey={n} key={n} title={v.title} preview={v.preview} date={v.date} active={v.active} toggleActive={toggleActive} />) }
             </div>
         </div>
     )
