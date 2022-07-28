@@ -2,14 +2,14 @@ import { useState } from 'react'
 
 import './Sidebar.css'
 
-import SidebarRow from './SidebarRow'
+import SidebarRow from './src/SidebarRow'
 
 export interface Notebook {
     name: string,
     icon: string,
-    indent: number,
+    active: boolean,
     children: Array<Notebook>,
-    active: boolean
+    indent: number
 }
 
 interface SidebarProps {
@@ -17,15 +17,15 @@ interface SidebarProps {
 }
 
 export default function Sidebar(props: SidebarProps) {
-
+    
     const [notebooks, setNotebooks] = useState(props.notebooks)
 
     function toggleActive(k: number) {
         setNotebooks(notebooks.map((v, n) => {
             if (n !== k) {
-                return {name: v.name, icon: v.icon, indent: v.indent, children: v.children, active: false}
+                return {name: v.name, icon: v.icon, active: false, children: v.children, indent: v.indent} as Notebook
             } else {
-                return {name: v.name, icon: v.icon, indent: v.indent, children: v.children, active: true}
+                return {name: v.name, icon: v.icon, active: true, children: v.children, indent: v.indent} as Notebook
             }
         }))
     }
@@ -40,7 +40,7 @@ export default function Sidebar(props: SidebarProps) {
                 </div>
             </div>
             <div id="Notebooks">
-                { notebooks.map((v, n) => <SidebarRow k={n} key={n} name={v.name} icon={v.icon} indent={v.indent} children={v.children} active={v.active} toggleActive={toggleActive} />)}
+                { notebooks.map((v, n) => <SidebarRow sKey={n} key={n} name={v.name} icon={v.icon[0]+v.icon[1]} active={v.active} toggleActive={toggleActive} childrenNotebooks={v.children} indent={v.indent} />)}
             </div>
             {/* <div id="SidebarFooter"></div> */}
         </div>
