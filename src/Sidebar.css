@@ -63,17 +63,17 @@
 }
 
 .SidebarRow {
-    width: 100%;
+    width: auto;
     height: 2.2em;
 
     border-bottom: #414359 2px solid;
-
+    
     padding-left: 2em;
-
+    
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
+    
     color: white;
 }
 
@@ -87,8 +87,12 @@
 
 .SidebarRow.active {
     /* background: rgb(124, 156, 167); */
-    /* border-bottom: rgb(124, 156, 167); */
+    /* border-bottom: rgb(124, 156, 167) 2px solid; */
+    /* border-bottom: rgb(165, 183, 189) 2px solid; */
+
     background: #414359;
+    border-bottom: #2c2e3e 2px solid;
+    
     outline: none;
 }
 

@@ -18,14 +18,15 @@ export default function SidebarRow(props: SidebarRowProps) {
 
     const [children, setChildren] = useState(props.children)
 
-    function toggleActive(k: number) {
+    function toggleActive(k: number): void {
         setChildren(children.map((v, n) => {
             if (n !== k) {
-                return {name: v.name, icon: v.icon, indent: v.indent, children: v.children, active: false}
+                return {name: v.name, icon: v.icon, indent: v.indent, children: [], active: false}
             } else {
-                return {name: v.name, icon: v.icon, indent: v.indent, children: v.children.map((e, i) => { return {name: e.name, icon: e.icon, indent: e.indent, children: e.children, active: false} as Notebook }), active: true}
+                return {name: v.name, icon: v.icon, indent: v.indent, children: [], active: true}
             }
         }))
+        props.toggleActive(props.k)
     }
 
     return (
